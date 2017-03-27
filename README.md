@@ -6,3 +6,10 @@ In order to create this project, here are the steps as follows:
 1. Create a new repo on github and do the same on your machine by creating a new directory for the project.
 2. Then create a src folder and add an index.html file. Within the src folder, create another folder for your js files. Then inside include your controller.js and modular.js files.
 3. Finally, include a README, a .jshintrc file and a .gitignore to begin building your project.
+4. To include styling for the sale tag, be sure to use bootstrap. Include a link for the styles in the header.
+To include sass:
+1. Change into src directory and then in the terminal:
+sass sass/main.scss style.class
+sass --watch sass/main.scss:style.class
+
+Now sass is watching for changes in any sass files you create.
