@@ -23,7 +23,7 @@
 
         <tr ng-repeat='item in inventoryCtrl.inventory'>
           <td class='name'>{{item.name}}</td>
-          <td>{{inventoryCtrl.getPrice(item) | currency:"USD$" }}
+          <td>{{inventoryCtrl.getPrice(item) | currency:"$" }}
             <img ng-show='item.discount > 0 ' src='https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png'></td>
           <td>{{item.quantity}}</td>
           <td class='color'>{{item.color}}</td>
