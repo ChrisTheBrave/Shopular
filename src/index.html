@@ -33,14 +33,25 @@
       <table class='table table-striped col-lg-8'>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>
+              <a href="#" ng-click="inventoryCtrl.sortType = 'name'; sortReverse = !sortReverse">
+              Name
+            </th>
+            <th>
+              <a href="#" ng-click="inventoryCtrl.sortType = 'price'; sortReverse = !sortReverse">
+
+              Price
+            </th>
+            <th>
+              <a href="#" ng-click="inventoryCtrl.sortType = 'quantity'; sortReverse = !sortReverse">
+
+              Quantity
+            </th>
             <th>Color</th>
         </tr>
         </thead>
 
-        <tr ng-repeat='item in inventoryCtrl.inventory'>
+        <tr ng-repeat='item in inventoryCtrl.inventory | orderBy:inventoryCtrl.sortType:sortReverse'>
           <td class='name'>{{item.name}}</td>
           <td>{{inventoryCtrl.getPrice(item) | currency:"$" }}
             <img ng-show='item.discount > 0 ' src='https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png'></td>

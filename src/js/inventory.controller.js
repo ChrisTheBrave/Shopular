@@ -8,6 +8,8 @@
   function InventoryController() {
     let vm = this;
     vm.newItem = {};
+    vm.sortType = 'price'; //sets the default sort type
+    vm.sortReverse = false; //sets the default sort order
 
     vm.inventory = [
       { "id": 2957, name: "widget", price: 32, quantity: 203, color: "red", "discount": 31 },
