@@ -7,6 +7,7 @@
 
   function InventoryController() {
     let vm = this;
+    vm.newItem = {};
 
     vm.inventory = [
       { "id": 2957, name: "widget", price: 32, quantity: 203, color: "red", "discount": 31 },
@@ -33,6 +34,28 @@
       let discountPrice = item.price - item.discount;
       let finalPrice = discountPrice * 1.0575;
       return finalPrice;
+    };
+
+    /**
+     * This function adds new items to the table
+     * @param {Object} item Should have name, price,
+     */
+    vm.addItem = function addItem(item) {
+      if(typeof(item) !== 'object') {
+        return;
+      }
+
+      let id = Date.now();
+
+      vm.inventory.push({
+        id: id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        color: item.color,
+        discount: item.discount
+      });
+      vm.newItem = {};
     };
   }
 

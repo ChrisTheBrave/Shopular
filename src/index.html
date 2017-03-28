@@ -11,6 +11,25 @@
 
     <main ng-controller='InventoryController as inventoryCtrl'>
 
+      <form
+          name='additem'
+          ng-submit='additem.$valid && inventoryCtrl.addItem(inventoryCtrl.newItem)'
+          novalidate>
+
+        <input ng-model='inventoryCtrl.newItem.name' type='text' name='name' placeholder='Name' required>
+
+        <input ng-model='inventoryCtrl.newItem.price' type='number' min='0' name='price' placeholder='Price' required>
+
+        <input ng-model='inventoryCtrl.newItem.quantity' type='number'  min='0' name='quantity' placeholder='Quantity' required>
+
+        <input ng-model='inventoryCtrl.newItem.color' type='text' name='color' placeholder='Color' required>
+
+        <input ng-model='inventoryCtrl.newItem.discount' type='number' min='0' name='discount' placeholder='Discount' required>
+
+        <input type='submit' value='Add item'>
+
+      </form>
+
       <table class='table table-striped col-lg-8'>
         <thead>
           <tr>
