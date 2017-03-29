@@ -39,11 +39,20 @@
     };
 
     /**
-     * This function adds new items to the table
-     * @param {Object} item Should have name, price,
+     * This function adds new items to the inventory
+     * @param {Object} item Should have (id), name, price, quantity, color, discount
+     * @return {void}
      */
     vm.addItem = function addItem(item) {
       if(typeof(item) !== 'object') {
+        return;
+      }
+      if(typeof(item.name) !== 'string' || item.length < 1) {
+        return;
+      }
+
+      item.price = Number(item.price);
+      if(Number.isNaN(item.price)) {
         return;
       }
 
@@ -59,6 +68,8 @@
       });
       vm.newItem = {};
     };
+
+    
   }
 
 

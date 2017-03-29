@@ -16,15 +16,26 @@
           ng-submit='additem.$valid && inventoryCtrl.addItem(inventoryCtrl.newItem)'
           novalidate>
 
+        <p ng-show='additem.name.$touched && !additem.name$valid'>You must enter an item name</p>
+
         <input ng-model='inventoryCtrl.newItem.name' type='text' name='name' placeholder='Name' required>
+
+        <p ng-show='additem.price.$touched && !additem.price$valid'>You must enter an item price above zero</p>
 
         <input ng-model='inventoryCtrl.newItem.price' type='number' min='0' name='price' placeholder='Price' required>
 
+        <p ng-show='additem.quantity.$touched && !additem.quantity$valid'>You must enter an item quantity</p>
+
         <input ng-model='inventoryCtrl.newItem.quantity' type='number'  min='0' name='quantity' placeholder='Quantity' required>
+
+        <p ng-show='additem.color.$touched && !additem.color$valid'>You must enter an item color</p>
 
         <input ng-model='inventoryCtrl.newItem.color' type='text' name='color' placeholder='Color' required>
 
+        <p ng-show='additem.discount.$touched && !additem.discount$valid'>You must enter an item discount above zero</p>
+
         <input ng-model='inventoryCtrl.newItem.discount' type='number' min='0' name='discount' placeholder='Discount' required>
+
 
         <input type='submit' value='Add item'>
 
@@ -34,34 +45,35 @@
         <thead>
           <tr>
             <th>
-              <a href="#" ng-click="inventoryCtrl.sortType = 'name'; sortReverse = !sortReverse">
-              Name
+              <a href='#' ng-click="inventoryCtrl.sortType = 'name'; inventoryCtrl.sortReverse = !sortReverse">
+                Name
+              </a>
             </th>
             <th>
-              <a href="#" ng-click="inventoryCtrl.sortType = 'price'; sortReverse = !sortReverse">
-
-              Price
+              <a href='#' ng-click="inventoryCtrl.sortType = 'price'; inventoryCtrl.sortReverse = !sortReverse">
+                Price
+              </a>
             </th>
             <th>
-              <a href="#" ng-click="inventoryCtrl.sortType = 'quantity'; sortReverse = !sortReverse">
-
-              Quantity
+              <a href='#' ng-click="inventoryCtrl.sortType = 'quantity'; inventoryCtrl.sortReverse = !sortReverse">
+                Quantity
+              </a>
             </th>
             <th>Color</th>
         </tr>
         </thead>
 
-        <tr ng-repeat='item in inventoryCtrl.inventory | orderBy:inventoryCtrl.sortType:sortReverse'>
-          <td class='name'>{{item.name}}</td>
-          <td>{{inventoryCtrl.getPrice(item) | currency:"$" }}
-            <img ng-show='item.discount > 0 ' src='https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png'></td>
-          <td>{{item.quantity}}</td>
-          <td class='color'>{{item.color}}</td>
-        </tr>
+        <tbody>
+          <tr ng-repeat='item in inventoryCtrl.inventory | orderBy:inventoryCtrl.sortType:sortReverse'>
+            <td class='name'>{{item.name}}</td>
+            <td>{{inventoryCtrl.getPrice(item) | currency:"$" }}
+              <img ng-show='item.discount > 0 ' src='https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png'></td>
+            <td>{{item.quantity}}</td>
+            <td class='color'>{{item.color}}</td>
+          </tr>
+      </tbody>
 
       </table>
-
-
 
     </main>
 
@@ -70,7 +82,7 @@
     </footer>
 
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js'></script>
-    <script src='/js/inventory.module.js'></script>
-    <script src='/js/inventory.controller.js'></script>
+    <script src='js/inventory.module.js'></script>
+    <script src='js/inventory.controller.js'></script>
   </body>
 </html>
