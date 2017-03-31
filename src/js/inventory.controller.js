@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('inventory')
+  angular.module('shop')
   .controller('InventoryController', InventoryController);
 
   InventoryController.$inject = ['InventoryService'];

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('inventory').factory('InventoryService', InventoryService);
+  angular.module('shop').factory('InventoryService', InventoryService);
 
   function InventoryService() {
 
@@ -9,12 +9,12 @@
 
 
     /**
-     * Add item to database
-     * @param {Object} item The item to add with name, price, quantity, color, discount
-     * @return {void}
-     */
+    * Add item to database
+    * @param {Object} item The item to add with name, price, quantity, color, discount
+    * @return {void}
+    */
     function addNewItem(item) {
-      vm.addItem = function addItem(item) {
+
       if(typeof(item) !== 'object' || typeof(item.name) !== 'string' || item.name.length < 1) {
         return;
       }
@@ -45,20 +45,19 @@
 
       localStorage.setItem('items', angular.toJson(items));
 
-    };
-    /**
-     * Gets arrays with item objects
-     *
-     * @return {Object} Returns items
-     */
-      function getAllItems() {
-        return items;
-      }
-      return {
-        addNewItem: addNewItem,
-        getAllItems: getAllItems
-      };
-
     }
+    /**
+    * Gets arrays with item objects
+    *
+    * @return {Object} Returns items
+    */
+    function getAllItems() {
+      return items;
+    }
+    return {
+      addNewItem: addNewItem,
+      getAllItems: getAllItems
+    };
+
   }
 }());
