@@ -4,7 +4,29 @@ module.exports = function gruntConfig(grunt) {
 
   grunt.initConfig({
 
-    clean: [ '/build' ],
+    // clean: [ '/build' ],
+
+    concat: {
+          alljs: {
+            options: {
+              sourceMap: true
+            },
+            src: ['src/js/school.module.js', 'src/j/**/*.js'],
+            dest: 'build/js/app.js'
+          }
+        },
+
+    babel: {
+          all: {
+            options: {
+              presets: ['es2015'],
+              sourceMap: true
+            },
+            files: {
+              'build/js/app.js': 'build/js/app.js'
+            }
+          }
+        },
 
     karma: {
       all: {
@@ -18,7 +40,14 @@ module.exports = function gruntConfig(grunt) {
             'src/js/**/*.js',
             'test/**/*.spec.js'
           ],
-          singleRun: true
+          singleRun: true,
+          preprocessors: {
+            'src/js/**/*.js': [ 'coverage' ]
+          },
+          reporters: [ 'dots', 'coverage' ],
+          coverageReporter: {
+            type: 'text-summary'
+          }
         }
       }
     }
@@ -26,7 +55,9 @@ module.exports = function gruntConfig(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-bable');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('build', ['karma']);
+  grunt.registerTask('build', ['karma', 'concat', 'babel']);
 
 };

@@ -13,6 +13,10 @@
 
     }));
 
+    afterEach(function () {
+      localStorage.removeItem('items');
+    });
+
     it('should add 1 + 1', function() {
       let result = (1+1);
       expect(result).to.equal(2);
@@ -41,7 +45,19 @@
       expect(items[0].discount).to.equal(2);
     });
 
-    // it();
+    it('should not add an item if the price is below one cents', function() {
+      expect(InventoryService.getAllItems().length).to.equal(0);
+      let now = Date.now();
+      InventoryService.addNewItem({
+        name: 'baby' + now,
+        price: 0,
+        quantity: 3,
+        color: 'red',
+        discount: 2
+      });
+      let items = InventoryService.getAllItems();
+      expect(items.length).to.equal(0);
+    });
   });
 
 }());
