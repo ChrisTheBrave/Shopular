@@ -17,10 +17,6 @@
       localStorage.removeItem('items');
     });
 
-    it('should add 1 + 1', function() {
-      let result = (1+1);
-      expect(result).to.equal(2);
-    });
 
     it('it should give the user an array of items', function() {
       let result = InventoryService.getAllItems();
@@ -53,10 +49,39 @@
         price: 0,
         quantity: 3,
         color: 'red',
-        discount: 2
+        discount: 1
       });
       let items = InventoryService.getAllItems();
       expect(items.length).to.equal(0);
+    });
+    it('should not add an item if the quantity is below zero', function() {
+      expect(InventoryService.getAllItems().length).to.equal(0);
+      let now = Date.now();
+      InventoryService.addNewItem({
+        name: 'baby' + now,
+        price: 1,
+        quantity: -1,
+        color: 'pink',
+        discount: 3
+      });
+      let items = InventoryService.getAllItems();
+      expect(items.length).to.equal(0);
+    });
+    it('should not add an item if the discount is below zero', function() {
+      expect(InventoryService.getAllItems().length).to.equal(0);
+      let now = Date.now();
+      InventoryService.addNewItem({
+        name: 'baby' + now,
+        price: 14,
+        quantity: 2,
+        color: 'green',
+        discount: -3
+      });
+      let items = InventoryService.getAllItems();
+      expect(items.length).to.equal(0);
+    });
+    it('should not add an empty item to the inventory', function() {
+      expect(InventoryService.getAllItems().length);
     });
   });
 
