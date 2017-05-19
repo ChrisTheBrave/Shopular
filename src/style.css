@@ -11,4 +11,9 @@ table.table {
   margin: 0 auto;
   width: 80%; }
 
+footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px; }
+
 /*# sourceMappingURL=style.css.map */
