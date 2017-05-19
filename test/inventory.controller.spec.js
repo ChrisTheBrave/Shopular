@@ -29,24 +29,22 @@
       };
       mockInventoryService.addItem.numTimesCalled = 0;
 
+
       InventoryController = $controller('InventoryController');
     }));
-
-    it('should do stuff', function() {
-      expect(InventoryController.newItem).to.be.an('object');
-      expect(InventoryController.addItem).to.be.a('function');
-    });
 
     it('should call addItem when adding', function() {
       expect(mockInventoryService.addItem.numTimesCalled).to.equal(0);
       InventoryController.addItem({});
       expect(mockInventoryService.addItem.numTimesCalled).to.equal(1);
     });
-
-
+    it('should get the price of an item', function functionName() {
+      let item = {
+        price: 5,
+        discount: 2
+      };
+      let expectedValue = 3.1725;
+      expect(InventoryController.getPrice(item)).to.be.closeTo(expectedValue, 0.001);
+    });
   });
-
-
-
-
 }());

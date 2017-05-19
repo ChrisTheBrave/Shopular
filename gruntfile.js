@@ -11,7 +11,7 @@ module.exports = function gruntConfig(grunt) {
             options: {
               sourceMap: true
             },
-            src: ['src/js/school.module.js', 'src/j/**/*.js'],
+            src: ['src/js/shop.module.js', 'src/js/**/*.js'],
             dest: 'build/js/app.js'
           }
         },
@@ -55,7 +55,7 @@ module.exports = function gruntConfig(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-bable');
+  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.registerTask('build', ['karma', 'concat', 'babel']);

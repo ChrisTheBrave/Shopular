@@ -81,7 +81,9 @@
       expect(items.length).to.equal(0);
     });
     it('should not add an empty item to the inventory', function() {
-      expect(InventoryService.getAllItems().length);
+      InventoryService.addNewItem({});
+      expect(InventoryService.getAllItems().length).to.equal(0);
+
     });
   });
 
